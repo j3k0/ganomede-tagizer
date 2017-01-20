@@ -1,0 +1,27 @@
+{
+  "name": "ganomede-tagizer",
+  "version": "0.0.1",
+  "description": "The mighty tagizer of ganomede usernames",
+  "main": "index.js",
+  "engines" : {
+      "node" : ">=6"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j3k0/ganomede-tagizer.git"
+  },
+  "keywords": [
+    "ganomede",
+    "username",
+    "cleanup"
+  ],
+  "author": "Jean-Christophe Hoelt <hoelt@fovea.cc>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j3k0/ganomede-tagizer/issues"
+  },
+  "homepage": "https://github.com/j3k0/ganomede-tagizer#readme"
+}
