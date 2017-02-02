@@ -12,13 +12,13 @@ const replacements = [
   }
 ];
 
-var tagizer = function(s) {
-    if (typeof s !== 'string')
-        return undefined;
+const tagizer = (s) => {
+  if (typeof s !== 'string')
+    return undefined;
 
-    return replacements.reduce((str, {pattern, replacement}) => {
-      return str.replace(pattern, replacement);
-    }, s.toLowerCase());
-}
+  return replacements.reduce((str, {pattern, replacement}) => {
+    return str.replace(pattern, replacement);
+  }, s.toLowerCase());
+};
 
 module.exports = tagizer;
