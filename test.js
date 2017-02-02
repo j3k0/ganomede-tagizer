@@ -1,3 +1,5 @@
+'use strict';
+
 const tagizer = require('./index');
 const assert = require('assert');
 
@@ -15,4 +17,6 @@ assert.equal(tagizer('A'), tagizer('a'));
 
 assert.equal(tagizer('p0lO'), tagizer('pO10'));
 
-console.log("All tests passed!");
+assert.equal(tagizer('NamilleX07'), 'namiiiexo7');
+
+console.log('All tests passed!'); // eslint-disable-line no-console
