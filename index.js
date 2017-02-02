@@ -1,11 +1,24 @@
+'use strict';
+
+const replacements = [
+  {
+    pattern: /0/g,
+    replacement: 'o'
+  },
+
+  {
+    pattern: /[l,1]/g,
+    replacement: 'i'
+  }
+];
+
 var tagizer = function(s) {
     if (typeof s !== 'string')
         return undefined;
-    return s
-        .toLowerCase()
-        .replace('0', 'o')
-        .replace('l', 'i')
-        .replace('1', 'i');
+
+    return replacements.reduce((str, {pattern, replacement}) => {
+      return str.replace(pattern, replacement);
+    }, s.toLowerCase());
 }
 
 module.exports = tagizer;

@@ -15,4 +15,6 @@ assert.equal(tagizer('A'), tagizer('a'));
 
 assert.equal(tagizer('p0lO'), tagizer('pO10'));
 
+assert.equal(tagizer('NamilleX07'), 'namiiiexo7');
+
 console.log("All tests passed!");
