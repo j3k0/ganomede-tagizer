@@ -1,34 +1,30 @@
 'use strict';
 
 const assert = require('assert');
-const middleware = require('../index').middleware;
 const td = require('testdouble');
+const directoryClientDouble = require('./directory-client.double');
+const middleware = require('../index').middleware;
 
 const req_id = '1232';
 const tag = 'goodtag';
 const username = 'Loic007';
 const badtag = 'badtag';
-
 process.env.LOG_LEVEL = 'fatal';
 
 describe('tagizer.middleware', () => {
 
-  let directoryClient;
-  let req, res, next;
+  let directoryClient, req, res, next;
+
   beforeEach(() => {
-    directoryClient = td.object(['byAlias']);
+    directoryClient = directoryClientDouble({
+      username, tag, req_id});
     req = {
+      log: td.object(['warn']),
       id: () => req_id,
       params: {'tag': tag, 'badtag': badtag},
       body: {'username': tag}
     };
     next = td.function('next');
-    td.when(directoryClient.byAlias(
-      td.matchers.anything()))
-      .thenCallback(new Error());
-    td.when(directoryClient.byAlias(
-      {type: 'tag', value: tag, req_id}))
-      .thenCallback(null, {id: username});
   });
 
   it('is a function that returns a function', () => {

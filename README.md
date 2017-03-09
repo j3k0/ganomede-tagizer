@@ -30,16 +30,35 @@ var tagBody  = tagizer.middleware('body', 'username');
 router.post('/login', tagBody, login);
 ```
 
-See `lib/middleware.js` &rarr; `saveAccount` for the full list of fields it exposes and/or overrides.
+See `lib/save-account-in-request.js` for the full list of fields it exposes and/or overrides.
 
 Default behavior is to read environment variables:
 
  * `DIRECTORY_PORT_8000_TCP_[ADDR|PORT|PROTOCOL]` - for setting up a connection with a directory client.
  *  `TAG_MODE` - only enable if it's a non-empty string
 
-Default behavior can be overridden by sending a thirst argument to the `tagizer.middleware` function, with fields:
+Default behavior can be overridden by sending a third argument to the `tagizer.middleware` function, with fields:
 
  * `host`, `port`, `protocol` - for ganomede-directory connection
  * `force` - to enable tag-mode regardless of `TAG_MODE` env
 
-### Helpers
+ ```js
+var tagBody  = tagizer.middleware('body', 'username', {
+  host: 'localhost',
+  port: 8000,
+  protocol: 'http',
+  force: true
+});
+```
+
+### Account Loader
+
+```js
+var tagizer = require('ganomede-tagizer');
+var loader = tagizer.loader();
+loader(req, 'ada12', (account) => {
+  console.log(`user ada12 should be displayed as #{account.name}`);
+});
+```
+
+`tagizer.loader` also accepts an object with the `host`, `port`, `protocol` and `force` fields, with similar meaning as the middleware. When not specified, environment variables will be used.

@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/j3k0/ganomede-tagizer#readme",
   "dependencies": {
-    "bunyan": "^1.8.8",
     "ganomede-directory": "^0.2.0",
     "restify": "^4.3.0"
   },
