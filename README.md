@@ -5,9 +5,9 @@ The mighty tagizer of ganomede usernames.
 ## Tag function
 
 ```js
-var tagizer = require('ganomede-tagizer');
-tagizer.tag('p0lO') === tagizer.tag('pO10');
-typeof tagizer.tag('abcdef') === 'string';
+var tagizer = require('ganomede-tagizer').tag;
+tag('p0lO') === tag('pO10');
+typeof tag('abcdef') === 'string';
 ```
 
 The goal of the tag function is to generate a non-visually ambiguous version of a username. You know, sometimes people confuse a 0 and a O, these sort of things.
@@ -16,3 +16,30 @@ This module exposes a single function that, given a username, returns a string: 
 
 In my use case, I make sure username's "tags" are globally unique in our users database, preventing confusingly similar-looking usernames to co-exist. A database search by username will search by tag: which should always return a single or no result.
 
+## Tag mode
+
+### Middleware
+
+```js
+var tagizer = require('ganomede-tagizer');
+
+var tagParam = tagizer.middleware('params', 'tag');
+router.get('/blah/:tag', tagParam, getBlah);
+
+var tagBody  = tagizer.middleware('body', 'username');
+router.post('/login', tagBody, login);
+```
+
+See `lib/middleware.js` &rarr; `saveAccount` for the full list of fields it exposes and/or overrides.
+
+Default behavior is to read environment variables:
+
+ * `DIRECTORY_PORT_8000_TCP_[ADDR|PORT|PROTOCOL]` - for setting up a connection with a directory client.
+ *  `TAG_MODE` - only enable if it's a non-empty string
+
+Default behavior can be overridden by sending a thirst argument to the `tagizer.middleware` function, with fields:
+
+ * `host`, `port`, `protocol` - for ganomede-directory connection
+ * `force` - to enable tag-mode regardless of `TAG_MODE` env
+
+### Helpers
