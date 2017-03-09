@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/j3k0/ganomede-tagizer/issues"
   },
-  "homepage": "https://github.com/j3k0/ganomede-tagizer#readme"
+  "homepage": "https://github.com/j3k0/ganomede-tagizer#readme",
+  "dependencies": {
+    "ganomede-directory": "^0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
 }
