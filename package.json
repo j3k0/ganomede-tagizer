@@ -1,6 +1,6 @@
 {
   "name": "ganomede-tagizer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The mighty tagizer of ganomede usernames",
   "main": "index.js",
   "engines": {
