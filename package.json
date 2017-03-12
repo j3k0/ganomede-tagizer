@@ -7,6 +7,7 @@
     "node": ">=6"
   },
   "scripts": {
+    "coverage": "istanbul cover _mocha -- --bail tests/**/*.test.js && istanbul report",
     "test": "mocha --bail tests/**/*.test.js",
     "testw": "mocha --watch --bail tests/**/*.test.js"
   },
@@ -30,6 +31,7 @@
     "restify": "^4.3.0"
   },
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "testdouble": "^1.11.2"
   }
