@@ -28,7 +28,7 @@
   "homepage": "https://github.com/j3k0/ganomede-tagizer#readme",
   "dependencies": {
     "ganomede-directory": "^0.2.0",
-    "restify": "^4.3.0"
+    "restify": "^5.0.1"
   },
   "devDependencies": {
     "istanbul": "^0.4.5",
